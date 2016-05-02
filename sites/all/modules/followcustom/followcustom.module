@@ -1,0 +1,29 @@
+<?php
+
+
+// function followcustom_form_alter(&$form, $form_state, $form_id) {
+//     if($form_id == 'follow_links_form') {
+//         print '<pre>';
+//         print_r($form);
+//         print '</pre>';
+//     }
+// }
+
+function followcustom_follow_networks_alter(&$networks, $uid = 0) {
+  // Add a network.
+
+  $networks[$uid]['imdb'] = array(
+    'title' => t('IMDB'),
+    'domain' => 'imdb.com',
+  );
+
+  $networks[$uid]['drupal'] = array(
+    'title' => t('Drupal.org'),
+    'domain' => 'drupal.org',
+  );
+
+  $networks[$uid]['etsy'] = array(
+      'title' => t('etsy'),
+      'domain' => 'gobeldy.gook',
+  );
+}

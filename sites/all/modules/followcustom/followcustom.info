@@ -1,0 +1,5 @@
+name = Custom Follow
+description = Allows customized social network site links
+package = Custom
+core = 7.x
+files[] = followcustom.module

@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<!-- saved from url=(0071)http://willvincent.com/blog/extending-follow-module-add-custom-networks -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#" xmlns:article="http://ogp.me/ns/article#" xmlns:book="http://ogp.me/ns/book#" xmlns:profile="http://ogp.me/ns/profile#" xmlns:video="http://ogp.me/ns/video#" xmlns:product="http://ogp.me/ns/product#" class="js"><head profile="http://www.w3.org/1999/xhtml/vocab"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<meta name="description" content="Extending the follow module is really pretty simple. Follow along, I&#39;ll show you how it&#39;s done! (Bad pun may or may not have been intended)">
+<meta name="keywords" content="blog post, Drupal, Tutorial, Drupal Planet">
+<meta name="generator" content="Drupal 7 (http://drupal.org)">
+<link rel="canonical" href="http://willvincent.com/blog/extending-follow-module-add-custom-networks">
+<link rel="shortlink" href="http://willvincent.com/node/37">
+<meta property="og:site_name" content="Will Vincent">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://willvincent.com/blog/extending-follow-module-add-custom-networks">
+<meta property="og:title" content="Extending the Follow Module to Add Custom Networks">
+<meta property="og:description" content="Extending the follow module is really pretty simple. Follow along, I&#39;ll show you how it&#39;s done! (Bad pun may or may not have been intended)">
+<meta property="og:updated_time" content="2013-05-16T14:25:09-05:00">
+<meta property="og:image" content="http://willvincent.com/sites/default/files/follow.jpg">
+<meta property="article:published_time" content="2013-05-03T12:51:23-05:00">
+<meta property="article:modified_time" content="2013-05-16T14:25:09-05:00">
+  <title>Extending the Follow Module to Add Custom Networks | Will Vincent</title>
+  <link type="text/css" rel="stylesheet" href="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/css_UQYluV2J03n0f1Mw8ydQBYtAIcJbomKhAsk2DxqpwSI.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/css_ZZIoiLD4qQDJC9O7DdYQN3vY_edlf0v7YAf85TqYjS0.css" media="all">
+<style type="text/css" media="all">
+<!--/*--><![CDATA[/*><!--*/
+html{font-size:14px;}body.no-sidebars #wrapper{width:75%;min-width:500px;max-width:900px;}body.one-sidebar #wrapper{width:85%;min-width:850px;max-width:1000px;}
+
+/*]]>*/-->
+</style>
+<link type="text/css" rel="stylesheet" href="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/css_ckXff2bc1r8ZyzYRUVx0MqCak6V8XvFBjaIgC1ReYCY.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/css_CnwkPbw4Gr1sJRQKr9Js3Un488pNrxuii6Zns6reW2w.css" media="all">
+
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="http://willvincent.com/sites/all/themes/typebased/ie8.css?o6d9e9" media="all" />
+<![endif]-->
+
+<!--[if lte IE 7]>
+<link type="text/css" rel="stylesheet" href="http://willvincent.com/sites/all/themes/typebased/ie7.css?o6d9e9" media="all" />
+<![endif]-->
+  <script async="" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/analytics.js"></script><script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/jquery.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.8/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/js_3TykeRWpejhD4-J3vdlaNXdULg9xhOZhbsppK0o2bUs.js"></script>
+<script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/js_2EiBwH-AfeL3OMiKvrKgLh12zCAyl_AdEjJr64Pf0Go.js"></script>
+<script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/js_Ftv1lMqelrk0HjM_nLdU3TL72nhDunrIpYHzfMHNRPE.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+SyntaxHighlighter.defaults['toolbar'] = false;
+//--><!]]>
+</script>
+<script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/js_I8yX6RYPZb7AtMcDUA3QKDZqVkvEn35ED11_1i7vVpc.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-2978477-2", {"cookieDomain":"auto"});ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/js_tzEGTRyjbSNo4GS4Eh6_ZJb5BgaDvQF9UshkdxwThp0.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"typebased","theme_token":"pqhKzW0FPlP5l5YZvsfUXMXTa5UvyOtJbVvsVbD_NdU","js":{"sites\/all\/modules\/syntaxhighlighter\/syntaxhighlighter.min.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.8.3\/jquery.min.js":1,"0":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shCore.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushBash.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushCss.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushDiff.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushJScript.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushPhp.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushSql.js":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/scripts\/shBrushXml.js":1,"sites\/all\/modules\/extlink\/extlink.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.js":1,"1":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"2":1,"sites\/all\/modules\/disqus\/disqus.js":1},"css":{"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/extlink\/extlink.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/styles\/shCore.css":1,"sites\/all\/libraries\/syntaxhighlighter_3.0.83\/styles\/shThemeDefault.css":1,"0":1,"sites\/all\/themes\/typebased\/reset.css":1,"sites\/default\/files\/css\/follow.css":1,"sites\/all\/themes\/typebased\/base.css":1,"sites\/all\/themes\/typebased\/style.css":1,"sites\/all\/themes\/typebased\/colors.css":1,"sites\/all\/themes\/typebased\/ie8.css":1,"sites\/all\/themes\/typebased\/ie7.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"extlink":{"extTarget":"_blank","extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extSubdomains":1,"extExclude":"","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":0,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"disqus":{"domain":"willvincent","url":"http:\/\/willvincent.com\/blog\/extending-follow-module-add-custom-networks","title":"Extending the Follow Module to Add Custom Networks","identifier":"node\/37"}});
+//--><!]]>
+</script>
+</head>
+<body class="html not-front not-logged-in page-node page-node- page-node-37 node-type-blog-post no-sidebars disqus-processed">
+  <div id="skip-link">
+    <a href="http://willvincent.com/blog/extending-follow-module-add-custom-networks#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="wrapper">
+  <div id="header">
+
+    <div id="branding">
+              <a href="http://willvincent.com/" title="Home" rel="home" id="logo">
+          <img src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/logo.png" alt="Home">
+        </a>
+      
+                        <div id="site-name"><strong>
+            <a href="http://willvincent.com/" title="Home" rel="home">Will Vincent</a>
+          </strong></div>
+              
+          </div> <!-- /#branding -->
+
+      <div id="header-menu">
+        <div class="region region-header-menu">
+    
+<div class="block-wrapper clearfix">
+  <div id="block-system-main-menu" class="block block-system block-menu block-content block-1">
+
+                    <h2>Main menu</h2>
+            
+      <div class="content">
+        <ul class="menu"><li class="first leaf"><a href="http://willvincent.com/">Home</a></li>
+<li class="leaf"><a href="http://willvincent.com/blog" title="">Blog</a></li>
+<li class="leaf"><a href="http://willvincent.com/resume" title="">Resume</a></li>
+<li class="last leaf"><a href="http://willvincent.com/contact" title="">Contact</a></li>
+</ul>      </div>
+
+  </div>
+</div>
+  </div>
+    </div>
+  
+
+  </div> <!-- /#header -->
+
+  <div id="main">
+          <div id="content" class="column">
+        <div class="inner">
+                    <div class="tabs"></div>
+          <a id="main-content"></a>
+                    
+                    
+          
+                                <div class="region region-content">
+    
+<div class="block-wrapper clearfix">
+  <div id="block-system-main" class="block-system block-content block-1">
+
+                  
+      <div class="content">
+        <div class="node-wrapper">
+  <div id="node-37" class="node node-blog-post node-promoted clearfix">
+
+    <div class="node-meta">
+              <div class="date">
+          <div class="day">03</div>
+          <div class="month-and-year">
+            <div class="month">May</div>
+            <div class="year">2013</div>
+          </div>
+        </div>
+                </div> <!-- /.node-meta -->
+
+    <div class="content">
+                    <h1 class="node-title">Extending the Follow Module to Add Custom Networks</h1>
+                  
+      <!-- google_ad_section_start --><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><img class="image-medium" style="float: right;" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/follow.jpg" alt="" width="220" height="152">Extending the <a href="http://drupal.org/project/follow" class="ext" target="_blank">follow module<span class="ext"><span class="element-invisible"> (link is external)</span></span></a> is really pretty simple. &nbsp;</p>
+<p>Follow along, I'll show you how it's done! <br><small>(Bad pun may or may not have been intended)</small></p>
+<!--break--><p>I'm using the follow module on this site to provide links to my various social network profiles and whatnot across the net, and it's pretty handy for that. &nbsp;</p>
+<p>However, when I recently found myself added to <a href="http://imdb.me/willvincent" target="_blank" class="ext">imdb<span class="ext"><span class="element-invisible"> (link is external)</span></span></a>, I thought it would be nice to include a link to that page along with my others. &nbsp;I also thought it might be nice to link to my <a href="http://drupal.org/user/261788" class="ext" target="_blank">profile on Drupal.org<span class="ext"><span class="element-invisible"> (link is external)</span></span></a>, seeing as how this blog primarily focuses on Drupal related topics.</p>
+<p>As it turns out, doing so is really straight forward. All that is involved is implementing an alter hook in a custom module, and adding a single line of css to your theme for the icon.</p>
+<p>Lets get to it!</p>
+<p>As I hadn't previously created a 'glue code' module for this site, I did so for this project by creating a module called&nbsp;<strong>wv_custom</strong>. &nbsp;The hook I needed to implement to add additional networks to the follow module is <em>HOOK_follow_networks_alter().&nbsp;</em>It's probably worth noting that with this alter hook you could also change the title or domain of an existing network, or remove networks from the list too, but we're not going to go into that here, we're focused on adding a couple new ones.</p>
+<p>So, I wanted to add imdb and drupal.org to the list, here's the code to do that:</p>
+<div><div id="highlighter_911989" class="syntaxhighlighter  php"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php keyword">function</code> <code class="php plain">wv_custom_follow_networks_alter(&amp;</code><code class="php variable">$networks</code><code class="php plain">, </code><code class="php variable">$uid</code> <code class="php plain">= 0) {</code></div><div class="line number2 index1 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php comments">// Add a network.</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php variable">$networks</code><code class="php plain">[</code><code class="php variable">$uid</code><code class="php plain">][</code><code class="php string">'imdb'</code><code class="php plain">] = </code><code class="php keyword">array</code><code class="php plain">(</code></div><div class="line number4 index3 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">'title'</code> <code class="php plain">=&gt; t(</code><code class="php string">'IMDB'</code><code class="php plain">),</code></div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">'domain'</code> <code class="php plain">=&gt; </code><code class="php string">'imdb.com'</code><code class="php plain">,</code></div><div class="line number6 index5 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">);</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php variable">$networks</code><code class="php plain">[</code><code class="php variable">$uid</code><code class="php plain">][</code><code class="php string">'drupal'</code><code class="php plain">] = </code><code class="php keyword">array</code><code class="php plain">(</code></div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">'title'</code> <code class="php plain">=&gt; t(</code><code class="php string">'Drupal.org'</code><code class="php plain">),</code></div><div class="line number10 index9 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">'domain'</code> <code class="php plain">=&gt; </code><code class="php string">'drupal.org'</code><code class="php plain">,</code></div><div class="line number11 index10 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">);</code></div><div class="line number12 index11 alt1"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div><p>Simple, right? &nbsp;the networks array is passed in by reference, so there's no need for a return value. All we had to do was tack on a couple extra options.</p>
+<p style="padding-left: 30px;"><strong>Note:</strong> If the new options don't show up for you, it's probably a caching issue. &nbsp;For me the APC opcode cache was preventing them from showing up in the list until I restarted the php process on the server. &nbsp;As I've told many clients over the past several years when they have weird issues with a Drupal site, "when in doubt, clear cache."</p>
+<p>Ok, now for the css.</p>
+<p>First, I dropped my icons into the icon directory for the follow module. This probably isn't ideal since they could theoretically go away if I update the module, putting them into the theme would make more sense.</p>
+<p>Next, and final, step was to add a couple lines of css to my stylesheet:</p>
+<div><div id="highlighter_824035" class="syntaxhighlighter  css"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="css plain">a.follow-link-imdb {</code></div><div class="line number2 index1 alt1"><code class="css spaces">&nbsp;&nbsp;</code><code class="css keyword">background-image</code><code class="css plain">: </code><code class="css value">url</code><code class="css plain">(/sites/</code><code class="css value">all</code><code class="css plain">/modules/follow/icons/</code><code class="css value">small</code><code class="css plain">/icon-imdb.png);</code></div><div class="line number3 index2 alt2"><code class="css plain">}</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="css plain">a.follow-link-drupal {</code></div><div class="line number6 index5 alt1"><code class="css spaces">&nbsp;&nbsp;</code><code class="css keyword">background-image</code><code class="css plain">: </code><code class="css value">url</code><code class="css plain">(/sites/</code><code class="css value">all</code><code class="css plain">/modules/follow/icons/</code><code class="css value">small</code><code class="css plain">/icon-drupal.png);</code></div><div class="line number7 index6 alt2"><code class="css plain">}</code></div></div></td></tr></tbody></table></div></div><p>See those selectors? &nbsp;<em>a.follow-link-<strong>[something]</strong></em> the "something" is the array key used previously in the alter hook. &nbsp;So any time an imdb link is added it will have a class of follow-link-imdb.</p>
+<p>Easy Peasy.</p>
+</div></div></div><!-- google_ad_section_end --><div class="field field-name-field-tags field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="http://willvincent.com/tags/drupal">Drupal</a></div><div class="field-item odd"><a href="http://willvincent.com/tags/tutorial">Tutorial</a></div><div class="field-item even"><a href="http://willvincent.com/tags/drupal-planet">Drupal Planet</a></div></div></div><ul class="links inline"><li class="node-readmore first last"></li>
+</ul>    </div>
+                  
+  </div> <!-- /.node -->
+
+  
+</div> <!-- /.node-wrapper -->
+      </div>
+
+  </div>
+</div>
+
+<div class="block-wrapper clearfix">
+  <div id="block-disqus-disqus_comments" class="block-disqus block-content block-2">
+
+                  
+      <div class="content">
+        <div id="disqus_thread"><iframe id="dsq-app2" name="dsq-app2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 722px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>      </div>
+
+  </div>
+</div>
+  </div>
+        </div> <!-- /.inner -->
+      </div> <!-- /#content -->
+    
+    
+  </div> <!-- /#main -->
+
+  <div id="footer">
+
+          <h2 class="element-invisible">Footer</h2>
+      <div id="footer-columns">
+                  <div id="footer-column-first" class="single">
+              <div class="region region-footer-column-first">
+    
+<div class="block-wrapper clearfix">
+  <div id="block-follow-site" class="block block-follow block-content block-1">
+
+                    <h2>Follow me</h2>
+            
+      <div class="content">
+        <div class="follow-links clearfix site"><div class="follow-link-wrapper follow-link-wrapper-drupal"><a href="http://drupal.org/user/261788" class="follow-link follow-link-drupal follow-link-site ext" title="Follow me on Drupal.org" target="_blank">Drupal.org</a>
+</div><div class="follow-link-wrapper follow-link-wrapper-twitter"><a href="http://twitter.com/willvincent" class="follow-link follow-link-twitter follow-link-site ext" title="Follow me on Twitter" target="_blank">Twitter</a>
+</div><div class="follow-link-wrapper follow-link-wrapper-linkedin"><a href="http://www.linkedin.com/in/willvincent" class="follow-link follow-link-linkedin follow-link-site ext" title="Follow me on LinkedIn" target="_blank">LinkedIn</a>
+</div><div class="follow-link-wrapper follow-link-wrapper-googleplus"><a href="https://plus.google.com/u/0/107634766288449858060" class="follow-link follow-link-googleplus follow-link-site ext" title="Follow me on Google+" target="_blank">Google+</a>
+</div><div class="follow-link-wrapper follow-link-wrapper-imdb"><a href="http://imdb.com/name/nm3958075/" class="follow-link follow-link-imdb follow-link-site ext" title="Follow me on IMDB" target="_blank">IMDB</a>
+</div></div>      </div>
+
+  </div>
+</div>
+  </div>
+          </div>
+        
+              </div><!-- /#footer-columns -->
+    
+    <div id="closure">
+
+        <div id="footer-menu">
+          <div id="copyright"><small>© Will Vincent | <a href="http://willvincent.com/">willvincent.com</a> 2008-2016</small></div>
+                  </div> <!-- /#footer-menu -->
+    </div> <!-- /#closure -->
+
+  </div> <!-- /#footer -->
+</div> <!-- /#wrapper -->
+  <script type="text/javascript" src="./Extending the Follow Module to Add Custom Networks _ Will Vincent_files/js_Rk5YIkK6m2gKTGH-GrMu0pM_PlMKXnI0ktQUgXw1XgA.js"></script>
+
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button id="cboxPrevious"></button><button id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><button id="cboxClose"></button></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

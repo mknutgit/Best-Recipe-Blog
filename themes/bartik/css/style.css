@@ -1639,3 +1639,7 @@ div.admin-panel .description {
 #footer-wrapper .poll .bar .foreground {
   background-color: #ddd;
 }
+
+a.follow-link-imdb {
+    background-image: url(/themes/bartik/images/Untitled.png);
+}

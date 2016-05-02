@@ -1,8 +1,10 @@
 <?php
 
 function customcontact_form_alter(&$form, $form_state, $form_id) {
-    // if($form_id == 'contact_site_form') {
-    //     $form['']
-    // }
-print_r($form_id);
+    if($form_id == 'contact_site_form') {
+        print '<pre>';
+        print_r($form);
+        print '</pre>';
+    }
+
 }

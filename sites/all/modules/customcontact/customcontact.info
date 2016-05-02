@@ -1,5 +1,5 @@
-Name = Custom Contact Form
-Description = Removes subject line and Send Yourself a Copy option
-Package = Custom
-Core = 7.x
+name = Custom Contact Form
+description = Removes subject line and Send Yourself a Copy option
+package = Custom
+core = 7.x
 files[] = customcontact.module

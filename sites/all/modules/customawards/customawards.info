@@ -1,0 +1,5 @@
+name = Custom Award Form
+description = Puts link tags into link form input on Awards type
+package = Custom
+core = 7.x
+files[] = customawards.module

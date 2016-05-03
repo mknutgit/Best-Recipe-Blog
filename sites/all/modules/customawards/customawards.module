@@ -1,0 +1,33 @@
+<?php
+
+// function customawards_after_build($form, $form_state) {
+//   // if($form_id == 'awards_node_form') {
+//   //
+//   //     $form['field_link']['und'][0]['#format'] = 'filtered_html';
+//   //     $form['field_link']['und'][0]['#entity']->menu['hidden'] = TRUE;
+//   //
+//   //   print '<pre>';
+//   //   print_r($form['field_link']['und'][0]['#entity']->menu['hidden']);
+//   //   print '</pre>';
+//   // }
+//     print '<pre>';
+//     print_r($form);
+//     print '</pre>';
+// }
+
+
+function customawards_form_alter(&$form, $form_state, $form_id) {
+  if($form_id == 'awards_node_form') {
+
+
+
+      $form['field_link']['und'][0]['#format'] = 0;
+      // $form['field_link']['und'][0]['#format'] = 'filtered_html';
+
+
+    print '<pre>';
+    print_r($form['field_link']['und'][0]);
+    print '</pre>';
+  }
+
+}
